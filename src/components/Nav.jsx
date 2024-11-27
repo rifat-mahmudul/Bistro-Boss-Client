@@ -55,8 +55,8 @@ const Nav = () => {
     </>
 
     return (
-        <header>
-            <div className="max-w-[90%] xl:max-w-[1200px] mx-auto flex justify-between items-center py-5">
+        <header className=" fixed z-10 w-full">
+            <div className="flex justify-between items-center py-3 max-w-[90%] xl:max-w-[1200px] mx-auto bg-[#00000094] text-white px-4">
                 <div>
                     <h1 className="flex flex-col font-Cinzel text-center font-bold">
                         <span className="text-xl">BISTROBOSS</span>

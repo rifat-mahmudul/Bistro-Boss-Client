@@ -16,7 +16,7 @@ const Banner = () => {
                 centerMode={true}
                 interval={3000}
                 infiniteLoop = {true}
-                className="max-w-[90%] xl:max-w-[1200px] mx-auto rounded-lg"
+                className="mx-auto rounded-lg"
             >
                 <div>
                     <img src={img1} alt="Slide 1" />

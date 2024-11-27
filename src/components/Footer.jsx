@@ -4,7 +4,7 @@ import { FaFacebook, FaTwitter } from "react-icons/fa"
 const Footer = () => {
     return (
         <footer className="w-full">
-                <div className="flex w-full">
+                <div className="sm:flex w-full">
                     <div className="bg-slate-700 sm:w-[50%] text-center text-white p-16">
                         <h1 className="text-2xl mb-4">CONTACT US</h1>
                         <p>123 ABS Street, Uni 21, Bangladesh</p>

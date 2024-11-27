@@ -4,6 +4,7 @@ import Menu from "../components/Menu"
 import MenuDisplay from "../components/MenuDisplay"
 import Order from "../components/Order"
 import Recommends from "../components/Recommends"
+import Testimonial from "../components/Testimonial"
 
 const Home = () => {
     return (
@@ -14,6 +15,7 @@ const Home = () => {
             <Menu></Menu>
             <Recommends></Recommends>
             <MenuDisplay></MenuDisplay>
+            <Testimonial></Testimonial>
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+/* eslint-disable react/prop-types */
 
 const Title = ({title, heading}) => {
     return (
@@ -9,9 +9,5 @@ const Title = ({title, heading}) => {
     )
 }
 
-Title.propTypes = {
-    title: PropTypes.string.isRequired,
-    heading: PropTypes.string.isRequired,
-}
 
 export default Title

@@ -3,7 +3,7 @@ import Title from "./Shared/Title";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { Navigation } from 'swiper/modules';
+import { Autoplay, Navigation } from 'swiper/modules';
 import { SiComma } from "react-icons/si";
 
 const Testimonial = () => {
@@ -25,8 +25,8 @@ const Testimonial = () => {
                 <Title title='What Our Clients Say' heading='TESTIMONIALS'></Title>
             </div>
 
-            <div className="max-w-[90%] xl:max-w-[1000px] mx-auto border border-red-500 py-16">
-            <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+            <div className="max-w-[90%] xl:max-w-[1000px] mx-auto py-4">
+            <Swiper autoplay={true} navigation={true} modules={[Navigation, Autoplay]} className="mySwiper">
                 
                 {
                     items.map(item => 

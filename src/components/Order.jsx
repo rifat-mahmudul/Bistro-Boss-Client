@@ -12,7 +12,7 @@ import Title from './Shared/Title';
 
 const Order = () => {
     return (
-        <section className='pb-16 pt-4 max-w-[90%] xl:max-w-[900px] mx-auto'>
+        <section className='pb-16 pt-4 max-w-[90%] xl:max-w-[1000px] mx-auto'>
 
             <div>
                 <Title title='From 11:00am to 10:00pm' heading='ORDER ONLINE'></Title>

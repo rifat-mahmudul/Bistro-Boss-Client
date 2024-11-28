@@ -1,10 +1,10 @@
-import Banner from "../components/Banner"
-import Bistro from "../components/Bistro"
-import Menu from "../components/Menu"
-import MenuDisplay from "../components/MenuDisplay"
-import Order from "../components/Order"
-import Recommends from "../components/Recommends"
-import Testimonial from "../components/Testimonial"
+import Banner from "../components/Home/Banner"
+import Bistro from "../components/Home/Bistro"
+import Menu from "../components/Home/Menu"
+import MenuDisplay from "../components/Home/MenuDisplay"
+import Order from "../components/Home/Order"
+import Recommends from "../components/Home/Recommends"
+import Testimonial from "../components/Home/Testimonial"
 
 const Home = () => {
     return (

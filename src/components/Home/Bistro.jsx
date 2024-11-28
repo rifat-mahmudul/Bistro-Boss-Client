@@ -1,4 +1,4 @@
-import './compo.css'
+import '../compo.css'
 
 const Bistro = () => {
     return (

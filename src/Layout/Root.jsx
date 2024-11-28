@@ -1,12 +1,14 @@
 import { Outlet } from "react-router"
-import Nav from "../components/Nav"
-import Footer from "../components/Footer"
+import Footer from "../components/Home/Footer"
+import Nav from "../components/Home/Nav"
 
 const Root = () => {
   return (
     <div>
       <Nav></Nav>
-      <Outlet></Outlet>
+      <div className="min-h-[calc(100vh-396px)]">
+        <Outlet></Outlet>
+      </div>
       <Footer></Footer>
     </div>
   )

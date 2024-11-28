@@ -1,6 +1,6 @@
-import './compo.css'
-import Title from './Shared/Title'
-import img from '../assets/home/featured.jpg'
+import '../compo.css'
+import Title from '../Shared/Title'
+import img from '../../assets/home/featured.jpg'
 
 const MenuDisplay = () => {
 

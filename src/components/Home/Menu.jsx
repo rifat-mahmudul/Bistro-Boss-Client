@@ -20,7 +20,7 @@ const Menu = () => {
             </div>
 
             <div className="text-center mt-5 mb-16">
-                <button className="border-b-2 border-black p-1 rounded-lg">View Full  Menu</button>
+                <button className="border-b-2 border-black rounded-lg">View Full  Menu</button>
             </div>
         </section>
     )

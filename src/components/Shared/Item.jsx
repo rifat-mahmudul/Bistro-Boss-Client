@@ -12,7 +12,7 @@ const Item = ({item}) => {
 
             <div>
                 <div className='flex gap-5'>
-                    <h3 className='font-bold text-xl'>{name}-------------</h3>
+                    <h3 className='font-bold text-xl'>{name}---</h3>
                     <p className='text-yellow-600'>${price}</p>
                 </div>
 

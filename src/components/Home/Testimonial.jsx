@@ -15,7 +15,6 @@ const Testimonial = () => {
         .then(res => res.json())
         .then(data => {
             setItems(data);
-            console.log(data)
         })
     }, [])
 

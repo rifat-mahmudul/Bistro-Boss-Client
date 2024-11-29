@@ -1,11 +1,11 @@
-import PropTypes from 'prop-types'
+/* eslint-disable react/prop-types */
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-const Recommend = ({recommend}) => {
+const Card = ({item}) => {
     AOS.init();
     
-    const {image, name, recipe} = recommend;
+    const {image, name, recipe} = item;
 
     return (
         <div data-aos="zoom-in-up" className="shadow-xl border border-gray-400 rounded-lg hover:scale-105 transition">
@@ -22,8 +22,4 @@ const Recommend = ({recommend}) => {
     )
 }
 
-Recommend.propTypes = {
-    recommend : PropTypes.object
-}
-
-export default Recommend
+export default Card

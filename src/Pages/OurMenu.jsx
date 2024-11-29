@@ -14,6 +14,8 @@ const OurMenu = () => {
     const todayOffer = menu.filter(i => i.category === "offered");
     const desserts = menu.filter(i => i.category === "dessert");
     const pizza = menu.filter(i => i.category === "pizza");
+    const salads = menu.filter(i => i.category === "salad");
+    const soups = menu.filter(i => i.category === "soup");
 
     return (
         <div>
@@ -51,6 +53,32 @@ const OurMenu = () => {
             <div className="pt-4 max-w-[90%] xl:max-w-[1000px] mx-auto grid grid-cols-1 sm:grid-cols-2 items-center justify-between gap-8">
                 {
                     pizza.slice(0, 6).map(item => <Item key={item._id} item={item}></Item>)
+                }
+            </div>
+
+            <div className="text-center mt-5 mb-16">
+                <button className="border-b-2 border-black rounded-lg">ORDER YOUR FAVOURITE FOOD</button>
+            </div>
+
+            {/* SALADS Section */}
+            <MenuBanner img={banner4} heading='SALADS' title='Would you like to try a dish?' height={`h-[400px]`}></MenuBanner>
+
+            <div className="pt-4 max-w-[90%] xl:max-w-[1000px] mx-auto grid grid-cols-1 sm:grid-cols-2 items-center justify-between gap-8">
+                {
+                    salads.slice(0, 6).map(item => <Item key={item._id} item={item}></Item>)
+                }
+            </div>
+
+            <div className="text-center mt-5 mb-16">
+                <button className="border-b-2 border-black rounded-lg">ORDER YOUR FAVOURITE FOOD</button>
+            </div>
+
+            {/* SOUPS Section */}
+            <MenuBanner img={banner5} heading='SOUPS' title='Would you like to try a dish?' height={`h-[400px]`}></MenuBanner>
+
+            <div className="pt-4 max-w-[90%] xl:max-w-[1000px] mx-auto grid grid-cols-1 sm:grid-cols-2 items-center justify-between gap-8">
+                {
+                    soups.slice(0, 6).map(item => <Item key={item._id} item={item}></Item>)
                 }
             </div>
 

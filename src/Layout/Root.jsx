@@ -5,7 +5,6 @@ import Nav from "../components/Home/Nav"
 const Root = () => {
 
     const location = useLocation();
-    console.log(location);
 
     const loginPathName = location.pathname.includes('/login');
     const registerPathName = location.pathname.includes('/register');

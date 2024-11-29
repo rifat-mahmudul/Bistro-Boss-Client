@@ -3,14 +3,31 @@ import banner from '../assets/Authentication/authentication.png'
 import loginImg from '../assets/Authentication/authentication2.png'
 import { FcGoogle } from "react-icons/fc";
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
+import { authContext } from '../Provider/AuthProvider';
 
 
 const Login = () => {
 
+    const {user, signInWithGoogle} = useContext(authContext);
+
     useEffect(() => {
         loadCaptchaEnginge(6);
-    }, [])
+    }, []);
+
+    const handleSubmit = e => {
+        e.preventDefault();
+    }
+
+    const handleGoogleLogIn = () => {
+        signInWithGoogle()
+        .then(result => {
+            console.log(result.user)
+        })
+        .catch(error => {
+            console.log(`error from google log in ${error}`)
+        })
+    }
 
     return (
         <section style={{backgroundImage: `url(${banner})`}}>
@@ -23,7 +40,7 @@ const Login = () => {
 
                 <div className='w-[45%]'>
 
-                    <form action="">
+                    <form onSubmit={handleSubmit}>
 
                         <h1 className='font-Cinzel font-bold text-4xl mb-5 text-center'>Login</h1>
 
@@ -54,7 +71,7 @@ const Login = () => {
 
                         <p className='text-center mt-5 mb-5 text-gray-500'>Or Log In With</p>
 
-                        <button className='flex justify-center gap-2 items-center text-center w-full py-3 border border-yellow-600 rounded-lg'><FcGoogle /> <p>Log In With Google</p></button>
+                        <button onClick={handleGoogleLogIn} className='flex justify-center gap-2 items-center text-center w-full py-3 border border-yellow-600 rounded-lg'><FcGoogle /> <p>Log In With Google</p></button>
                     </form>
 
                 </div>

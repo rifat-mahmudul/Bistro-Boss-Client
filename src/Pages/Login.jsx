@@ -2,8 +2,16 @@ import { Link } from 'react-router'
 import banner from '../assets/Authentication/authentication.png'
 import loginImg from '../assets/Authentication/authentication2.png'
 import { FcGoogle } from "react-icons/fc";
+import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
+import { useEffect } from 'react';
+
 
 const Login = () => {
+
+    useEffect(() => {
+        loadCaptchaEnginge(6);
+    }, [])
+
     return (
         <section style={{backgroundImage: `url(${banner})`}}>
             
@@ -27,6 +35,15 @@ const Login = () => {
                         <div className='mt-4'>
                             <h1 className='mb-2 font-semibold'>Password</h1>
                             <input className='w-full p-3 rounded-md' type="password" name="password" id="password" placeholder='Enter Your Password' />
+                        </div>
+
+                        <div className='mt-4'>
+                            <LoadCanvasTemplate />
+                        </div>
+
+                        
+                        <div className='mt-4'>
+                            <input className='w-full p-3 rounded-md' type="text" name="captcha" id="captcha" placeholder='Type Here' />
                         </div>
 
                         <div>

@@ -4,6 +4,7 @@ import Home from "../Pages/Home";
 import ContactUs from "../Pages/ContactUs";
 import OurMenu from "../Pages/OurMenu";
 import OurShop from "../Pages/OurShop";
+import Login from "../Pages/Login";
 
 const AppRoutes = () => {
     return (
@@ -13,6 +14,7 @@ const AppRoutes = () => {
                 <Route path="/contact-us" element={<ContactUs></ContactUs>}></Route>
                 <Route path="/our-menu" element={<OurMenu></OurMenu>}></Route>
                 <Route path="/our-shop" element={<OurShop></OurShop>}></Route>
+                <Route path="/login" element={<Login></Login>}></Route>
             </Route>
         </Routes>
     );

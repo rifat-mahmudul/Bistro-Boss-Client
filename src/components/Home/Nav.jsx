@@ -48,7 +48,7 @@ const Nav = () => {
         <NavLink 
         onClick={() => setOpen(false)} 
         className={({isActive}) => isActive ? `text-yellow-500 font-bold` : `font-semibold hover:text-yellow-500 transition`} 
-        to="/log-in">
+        to="/login">
             LOG IN
         </NavLink>
     

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { RiMenu3Fill } from "react-icons/ri"
 import { RxCross2 } from "react-icons/rx"
-import { NavLink } from "react-router"
+import { Link, NavLink } from "react-router"
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -58,10 +58,12 @@ const Nav = () => {
         <header className=" fixed z-10 w-full bg-[#00000094]">
             <div className="flex justify-between items-center py-3 max-w-[90%] xl:max-w-[1200px] mx-auto text-white px-4 backdrop-blur-lg">
                 <div>
-                    <h1 className="flex flex-col font-Cinzel text-center font-bold">
-                        <span className="text-xl">BISTROBOSS</span>
-                        <span className="tracking-widest">Restaurant</span>
-                    </h1>
+                    <Link to="/">
+                        <h1 className="flex flex-col font-Cinzel text-center font-bold">
+                            <span className="text-xl">BISTROBOSS</span>
+                            <span className="tracking-widest">Restaurant</span>
+                        </h1>
+                    </Link>
                 </div>
 
                 <div>

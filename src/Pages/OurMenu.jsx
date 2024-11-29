@@ -7,6 +7,7 @@ import banner5 from "../assets/menu/soup-bg.jpg"
 import useMenu from "../Hooks/useMenu"
 import Title from "../components/Shared/Title";
 import Item from "../components/Shared/Item";
+import { Link } from "react-router"
 
 const OurMenu = () => {
 
@@ -31,7 +32,9 @@ const OurMenu = () => {
             </div>
 
             <div className="text-center mt-5 mb-16">
-                <button className="border-b-2 border-black rounded-lg">ORDER YOUR FAVOURITE FOOD</button>
+                <Link to='/our-shop'>
+                    <button className="border-b-2 border-black rounded-lg">ORDER YOUR FAVOURITE FOOD</button>
+                </Link>
             </div>
 
             {/* Dessert Section */}
@@ -44,7 +47,9 @@ const OurMenu = () => {
             </div>
 
             <div className="text-center mt-5 mb-16">
-                <button className="border-b-2 border-black rounded-lg">ORDER YOUR FAVOURITE FOOD</button>
+                <Link to='/our-shop'>
+                    <button className="border-b-2 border-black rounded-lg">ORDER YOUR FAVOURITE FOOD</button>
+                </Link>
             </div>
 
             {/* Pizza Section */}
@@ -57,7 +62,9 @@ const OurMenu = () => {
             </div>
 
             <div className="text-center mt-5 mb-16">
-                <button className="border-b-2 border-black rounded-lg">ORDER YOUR FAVOURITE FOOD</button>
+                <Link to='/our-shop'>
+                    <button className="border-b-2 border-black rounded-lg">ORDER YOUR FAVOURITE FOOD</button>
+                </Link>
             </div>
 
             {/* SALADS Section */}
@@ -70,7 +77,9 @@ const OurMenu = () => {
             </div>
 
             <div className="text-center mt-5 mb-16">
-                <button className="border-b-2 border-black rounded-lg">ORDER YOUR FAVOURITE FOOD</button>
+                <Link to='/our-shop'>
+                    <button className="border-b-2 border-black rounded-lg">ORDER YOUR FAVOURITE FOOD</button>
+                </Link>
             </div>
 
             {/* SOUPS Section */}
@@ -83,7 +92,9 @@ const OurMenu = () => {
             </div>
 
             <div className="text-center mt-5 mb-16">
-                <button className="border-b-2 border-black rounded-lg">ORDER YOUR FAVOURITE FOOD</button>
+                <Link to='/our-shop'>
+                    <button className="border-b-2 border-black rounded-lg">ORDER YOUR FAVOURITE FOOD</button>
+                </Link>
             </div>
 
         </div>

@@ -7,17 +7,20 @@ const Root = () => {
     const location = useLocation();
     console.log(location);
 
-    const pathName = location.pathname.includes('/login');
+    const loginPathName = location.pathname.includes('/login');
+    const registerPathName = location.pathname.includes('/register');
 
   return (
     <div>
       {
-        pathName || <Nav></Nav>
+        loginPathName || registerPathName || <Nav></Nav>
       }
       <div className="min-h-[calc(100vh-396px)]">
         <Outlet></Outlet>
       </div>
-      <Footer></Footer>
+      {
+        loginPathName || registerPathName || <Footer></Footer>
+      }
     </div>
   )
 }

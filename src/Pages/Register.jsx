@@ -4,12 +4,15 @@ import loginImg from '../assets/Authentication/authentication2.png'
 import Swal from 'sweetalert2'
 import { FaEyeSlash } from "react-icons/fa"
 import { IoMdEye } from "react-icons/io"
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { authContext } from '../Provider/AuthProvider'
 
 const Register = () => {
 
+    const {createUser, logOut, profileUpdate} = useContext(authContext);
+
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const togglePasswordVisibility = () => {
         setIsPasswordVisible((prev) => !prev);
@@ -73,7 +76,34 @@ const Register = () => {
             return;
         }
     
-        console.log(name, email, password);
+
+        //register method
+        createUser(email, password)
+        .then(() => {
+            profileUpdate(name)
+            .then()
+            .catch(error => {
+                console.log(`error from updateProfile ${error}`)
+            });
+            logOut()
+            .then()
+            .catch(error => {
+                console.log(`error from logOut ${error}`)
+            })
+            Swal.fire({
+                icon: "success",
+                title: "Registration Successful",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            navigate('/login')
+        })
+        .catch(error => {
+            console.log(`error from register ${error}`);
+            Swal.fire({ icon: "error", title: "Oops...", text: `${error.message}` });
+        })
+
+        form.reset();
     };
     
 

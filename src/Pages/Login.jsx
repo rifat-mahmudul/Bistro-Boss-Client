@@ -5,6 +5,7 @@ import { FcGoogle } from "react-icons/fc";
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { useContext, useEffect } from 'react';
 import { authContext } from '../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 
 const Login = () => {
@@ -15,8 +16,61 @@ const Login = () => {
         loadCaptchaEnginge(6);
     }, []);
 
-    const handleSubmit = e => {
+    const hanldeLogIn = e => {
         e.preventDefault();
+        const form = e.target;
+        const email = form.email.value.trim();
+        const password = form.password.value;
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
+
+        if (!email || !password ) {
+            Swal.fire({ icon: "error", title: "Oops...", text: "All fields are required!" });
+            return;
+        }
+    
+        if (!emailRegex.test(email)) {
+            Swal.fire({ icon: "error", title: "Oops...", text: "Invalid email format!" });
+            return;
+        }
+    
+        if (password.length < 6) {
+            Swal.fire({ icon: "error", title: "Oops...", text: "Password should be at least 6 characters!" });
+            return;
+        }
+
+        if (!/[A-Z]/.test(password)) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Password must include at least one uppercase letter!",
+            });
+            return;
+        }
+    
+        if (!/[a-z]/.test(password)) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Password must include at least one lowercase letter!",
+            });
+            return;
+        }
+
+        if (!specialCharRegex.test(password)) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Password must include at least one special character!",
+            });
+            return;
+        }
+    
+        // if (password !== confirmPassword) {
+        //     Swal.fire({ icon: "error", title: "Oops...", text: "Passwords do not match!" });
+        //     return;
+        // }
     }
 
     const handleGoogleLogIn = () => {
@@ -40,7 +94,7 @@ const Login = () => {
 
                 <div className='w-[45%]'>
 
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={hanldeLogIn}>
 
                         <h1 className='font-Cinzel font-bold text-4xl mb-5 text-center'>Login</h1>
 

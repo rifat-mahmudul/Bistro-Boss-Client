@@ -1,13 +1,40 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { RiMenu3Fill } from "react-icons/ri"
 import { RxCross2 } from "react-icons/rx"
-import { Link, NavLink } from "react-router"
+import { Link, NavLink, useNavigate } from "react-router"
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { authContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Nav = () => {
+
+
     AOS.init();
     const [open, setOpen] = useState(false);
+    const {logOut, user} = useContext(authContext);
+    const navigate = useNavigate();
+
+    const handleLogOut = () => {
+        logOut()
+        .then(() => {
+            Swal.fire({
+                icon: "success",
+                title: "Successfully Log Out",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            navigate('/')
+        })
+        .catch(error => {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: `${error.message}`,
+            });
+            return;
+        })
+    }
 
 
     const navItem = <>
@@ -45,12 +72,23 @@ const Nav = () => {
             OUR SHOP
         </NavLink>
 
-        <NavLink 
-        onClick={() => setOpen(false)} 
-        className={({isActive}) => isActive ? `text-yellow-500 font-bold` : `font-semibold hover:text-yellow-500 transition`} 
-        to="/login">
-            LOG IN
-        </NavLink>
+        {
+            user ? 
+            <button 
+            onClick={handleLogOut} 
+            className="py-2 px-5 rounded-lg bg-yellow-600 font-bold text-white">
+                Log Out
+            </button>
+            :
+
+            <NavLink 
+            onClick={() => setOpen(false)} 
+            className={({isActive}) => isActive ? `text-yellow-500 font-bold` : `font-semibold hover:text-yellow-500 transition`} 
+            to="/login">
+                LOG IN
+            </NavLink>
+        }
+
     
     </>
 
@@ -68,7 +106,7 @@ const Nav = () => {
 
                 <div>
                     <nav>
-                        <ul className="lg:flex hidden gap-5">
+                        <ul className="lg:flex items-center hidden gap-5">
                             {navItem}
                         </ul>
                     </nav>

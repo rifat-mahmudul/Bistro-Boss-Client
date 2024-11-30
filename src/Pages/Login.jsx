@@ -1,26 +1,36 @@
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import banner from '../assets/Authentication/authentication.png'
 import loginImg from '../assets/Authentication/authentication2.png'
 import { FcGoogle } from "react-icons/fc";
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { authContext } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2';
+import { FaEyeSlash } from "react-icons/fa"
+import { IoMdEye } from "react-icons/io"
 
 
 const Login = () => {
 
-    const {user, signInWithGoogle} = useContext(authContext);
+    const {logIn} = useContext(authContext);
+    const {signInWithGoogle} = useContext(authContext);
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         loadCaptchaEnginge(6);
     }, []);
+
+    const togglePasswordVisibility = () => {
+        setIsPasswordVisible((prev) => !prev);
+    };
 
     const hanldeLogIn = e => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value.trim();
         const password = form.password.value;
+        const captcha = form.captcha.value;
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
@@ -67,10 +77,29 @@ const Login = () => {
             return;
         }
     
-        // if (password !== confirmPassword) {
-        //     Swal.fire({ icon: "error", title: "Oops...", text: "Passwords do not match!" });
-        //     return;
-        // }
+        if (captcha.length === 0) {
+            Swal.fire({ icon: "error", title: "Oops...", text: "Please Enter Captcha!" });
+            return;
+        }
+    
+        if (!validateCaptcha(captcha)) {
+            Swal.fire({ icon: "error", title: "Oops...", text: "Captcha Not Matched!" });
+            return;
+        }
+
+        logIn(email, password)
+        .then(() => {
+            Swal.fire({
+                icon: "success",
+                title: "Successfully Log In",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            navigate('/')
+        })
+        .catch(error => {
+            Swal.fire({ icon: "error", title: "Oops...", text: `${error.message}` });
+        })
     }
 
     const handleGoogleLogIn = () => {
@@ -79,20 +108,20 @@ const Login = () => {
             console.log(result.user)
         })
         .catch(error => {
-            console.log(`error from google log in ${error}`)
+            Swal.fire({ icon: "error", title: "Oops...", text: `${error.message}` });
         })
     }
 
     return (
         <section style={{backgroundImage: `url(${banner})`}}>
             
-            <div className='max-w-[90%] xl:max-w-[800px] mx-auto flex justify-between items-center py-16'>
+            <div className='max-w-[90%] xl:max-w-[800px] mx-auto sm:flex justify-between items-center py-16'>
                 
                 <div>
                     <img src={loginImg} className='h-[300px]' alt="" />
                 </div>
 
-                <div className='w-[45%]'>
+                <div className='sm:w-[45%]'>
 
                     <form onSubmit={hanldeLogIn}>
 
@@ -103,10 +132,24 @@ const Login = () => {
                             <input className='w-full p-3 rounded-md' type="email" name="email" id="email" placeholder='Enter Your Email' />
                         </div>
 
-                        <div className='mt-4'>
+                        <div className='mt-4 relative'>
                             <h1 className='mb-2 font-semibold'>Password</h1>
-                            <input className='w-full p-3 rounded-md' type="password" name="password" id="password" placeholder='Enter Your Password' />
+                            <input
+                                className='w-full p-3 rounded-md pr-10'
+                                type={isPasswordVisible ? "text" : "password"}
+                                name="password"
+                                id="password"
+                                placeholder='Enter Your Password'
+                            />
+                            <button
+                                className="absolute top-[70%] right-3 transform -translate-y-1/2 text-gray-600"
+                                onClick={togglePasswordVisibility}
+                                type="button"
+                            >
+                                {isPasswordVisible ? <IoMdEye /> : <FaEyeSlash />}
+                            </button>
                         </div>
+
 
                         <div className='mt-4'>
                             <LoadCanvasTemplate />
@@ -123,11 +166,11 @@ const Login = () => {
 
                         <p className='mt-4 text-yellow-600'>New here? Please <Link className='text-blue-600' to="/register">Register</Link></p>
 
-                        <p className='text-center mt-5 mb-5 text-gray-500'>Or Log In With</p>
-
-                        <button onClick={handleGoogleLogIn} className='flex justify-center gap-2 items-center text-center w-full py-3 border border-yellow-600 rounded-lg'><FcGoogle /> <p>Log In With Google</p></button>
                     </form>
 
+                    <p className='text-center mt-5 mb-5 text-gray-500'>Or Log In With</p>
+
+                    <button onClick={handleGoogleLogIn} className='flex justify-center gap-2 items-center text-center w-full py-3 border border-yellow-600 rounded-lg'><FcGoogle /> <p>Log In With Google</p></button>
                 </div>
 
             </div>

@@ -6,6 +6,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { authContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { TfiShoppingCart } from "react-icons/tfi";
 
 const Nav = () => {
 
@@ -70,6 +71,13 @@ const Nav = () => {
         className={({isActive}) => isActive ? `text-yellow-500 font-bold` : `font-semibold hover:text-yellow-500 transition`} 
         to="/our-shop">
             OUR SHOP
+        </NavLink>
+
+        <NavLink 
+        onClick={() => setOpen(false)} 
+        className={({isActive}) => isActive ? `text-yellow-500 font-bold` : `font-semibold hover:text-yellow-500 transition`} 
+        to="/cart">
+            <TfiShoppingCart className="mx-auto" size={25}></TfiShoppingCart>
         </NavLink>
 
         {

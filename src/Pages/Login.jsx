@@ -8,6 +8,7 @@ import { authContext } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { FaEyeSlash } from "react-icons/fa"
 import { IoMdEye } from "react-icons/io"
+import { Helmet } from 'react-helmet-async';
 
 
 const Login = () => {
@@ -114,6 +115,10 @@ const Login = () => {
 
     return (
         <section style={{backgroundImage: `url(${banner})`}}>
+
+            <Helmet>
+                <title>Login - Bistro Boss</title>
+            </Helmet>
             
             <div className='max-w-[90%] xl:max-w-[800px] mx-auto sm:flex justify-between items-center py-16'>
                 

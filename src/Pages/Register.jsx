@@ -6,6 +6,7 @@ import { FaEyeSlash } from "react-icons/fa"
 import { IoMdEye } from "react-icons/io"
 import { useContext, useState } from 'react'
 import { authContext } from '../Provider/AuthProvider'
+import { Helmet } from 'react-helmet-async'
 
 const Register = () => {
 
@@ -110,6 +111,10 @@ const Register = () => {
     return (
         <section className='sm:h-[100vh] py-4 sm:py-0 flex sm:flex-row flex-col justify-center items-center' style={{backgroundImage: `url(${banner})`}}>
             
+            <Helmet>
+                <title>Register - Bistro Boss</title>
+            </Helmet>
+
             <div className='max-w-[90%] xl:max-w-[800px] mx-auto sm:flex justify-between items-center'>
 
                 <div className='sm:w-[45%]'>

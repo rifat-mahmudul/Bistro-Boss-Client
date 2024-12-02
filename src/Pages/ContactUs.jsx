@@ -4,10 +4,15 @@ import Title from '../components/Shared/Title'
 import { MdPhoneInTalk } from "react-icons/md";
 import { ImLocation2 } from "react-icons/im";
 import { BsFillClockFill } from "react-icons/bs";
+import { Helmet } from 'react-helmet-async';
 
 const ContactUs = () => {
     return (
         <section>
+
+            <Helmet>
+                <title>Contact Us - Bistro Boss</title>
+            </Helmet>
 
             <MenuBanner img={banner} heading='CONTACT US' title='Would you like to try a dish?' height={`h-[500px]`}></MenuBanner>
 

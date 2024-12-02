@@ -4,6 +4,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import useMenu from "../Hooks/useMenu";
 import Card from "../components/OurShop/Card";
+import { Helmet } from "react-helmet-async";
 
 const OurShop = () => {
 
@@ -16,6 +17,10 @@ const OurShop = () => {
 
     return (
         <section>
+
+            <Helmet>
+                <title>Our Shop - Bistro Boss</title>
+            </Helmet>
             
             <div>
                 <MenuBanner title='OUR SHOP' heading='Would you like to try a dish?' img={banner} height={`h-[500px]`}></MenuBanner>

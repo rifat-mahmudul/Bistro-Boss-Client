@@ -8,6 +8,7 @@ import useMenu from "../Hooks/useMenu"
 import Title from "../components/Shared/Title";
 import Item from "../components/Shared/Item";
 import { Link } from "react-router"
+import { Helmet } from "react-helmet-async"
 
 const OurMenu = () => {
 
@@ -20,6 +21,10 @@ const OurMenu = () => {
 
     return (
         <div>
+
+            <Helmet>
+                <title>Our Menu - Bistro Boss</title>
+            </Helmet>
             <MenuBanner img={banner1} heading='OUR MENU' title='Would you like to try a dish?' height={`h-[500px]`}></MenuBanner>
 
             {/* todayOffer Section */}

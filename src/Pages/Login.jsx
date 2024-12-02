@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router'
+import { Link, useLocation, useNavigate } from 'react-router'
 import banner from '../assets/Authentication/authentication.png'
 import loginImg from '../assets/Authentication/authentication2.png'
 import { FcGoogle } from "react-icons/fc";
@@ -17,6 +17,8 @@ const Login = () => {
     const {signInWithGoogle} = useContext(authContext);
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state || '/';
 
     useEffect(() => {
         loadCaptchaEnginge(6);
@@ -96,7 +98,7 @@ const Login = () => {
                 showConfirmButton: false,
                 timer: 1500
             });
-            navigate('/')
+            navigate(from)
         })
         .catch(error => {
             Swal.fire({ icon: "error", title: "Oops...", text: `${error.message}` });

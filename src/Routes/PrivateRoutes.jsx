@@ -2,6 +2,7 @@
 import { useContext } from "react"
 import { authContext } from "../Provider/AuthProvider"
 import { Navigate, useLocation } from "react-router";
+import FadeLoader from "react-spinners/FadeLoader";
 
 const PrivateRoutes = ({children}) => {
 
@@ -9,7 +10,9 @@ const PrivateRoutes = ({children}) => {
     const location = useLocation();
 
     if(loading){
-        return <p>Loading......</p>
+        return <div className="flex justify-center items-center h-[100vh] text-yellow-600">
+            <FadeLoader color="#ca8a04" />
+        </div>
     }
 
     if(user){

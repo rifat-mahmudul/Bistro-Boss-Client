@@ -1,6 +1,7 @@
 import Title from "../Shared/Title"
 import Item from "../Shared/Item";
 import useMenu from "../../Hooks/useMenu";
+import { Link } from "react-router";
 
 const Menu = () => {
 
@@ -20,7 +21,9 @@ const Menu = () => {
             </div>
 
             <div className="text-center mt-5 mb-16">
-                <button className="border-b-2 border-black rounded-lg">View Full  Menu</button>
+                <Link to="/our-menu">
+                    <button className="border-b-2 border-black rounded-lg">View Full  Menu</button>
+                </Link>
             </div>
         </section>
     )

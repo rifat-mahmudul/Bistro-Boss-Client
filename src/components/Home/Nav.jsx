@@ -1,7 +1,7 @@
 import { useContext, useState } from "react"
 import { RiMenu3Fill } from "react-icons/ri"
 import { RxCross2 } from "react-icons/rx"
-import { Link, NavLink, useNavigate } from "react-router"
+import { Link, NavLink, useLocation, useNavigate } from "react-router"
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { authContext } from "../../Provider/AuthProvider";
@@ -15,27 +15,43 @@ const Nav = () => {
     const [open, setOpen] = useState(false);
     const {logOut, user} = useContext(authContext);
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state || '/';
 
     const handleLogOut = () => {
-        logOut()
-        .then(() => {
-            Swal.fire({
-                icon: "success",
-                title: "Successfully Log Out",
-                showConfirmButton: false,
-                timer: 1500
-            });
-            navigate('/')
-        })
-        .catch(error => {
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: `${error.message}`,
-            });
-            return;
-        })
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, log out!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                logOut()
+                .then(() => {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Successfully Log Out",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    navigate(from)
+                    .catch(error => {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: `${error.message}`,
+                        });
+                        return;
+                    })
+                })
+            }
+        });
     }
+
 
 
     const navItem = <>

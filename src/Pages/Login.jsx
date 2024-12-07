@@ -107,8 +107,14 @@ const Login = () => {
 
     const handleGoogleLogIn = () => {
         signInWithGoogle()
-        .then(result => {
-            console.log(result.user)
+        .then(() => {
+            Swal.fire({
+                icon: "success",
+                title: "Successfully Log In",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            navigate(from)
         })
         .catch(error => {
             Swal.fire({ icon: "error", title: "Oops...", text: `${error.message}` });

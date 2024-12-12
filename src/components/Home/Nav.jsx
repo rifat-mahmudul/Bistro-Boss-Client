@@ -1,19 +1,19 @@
-import { useContext, useState } from "react"
+import { useState } from "react"
 import { RiMenu3Fill } from "react-icons/ri"
 import { RxCross2 } from "react-icons/rx"
 import { Link, NavLink, useLocation, useNavigate } from "react-router"
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { authContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { TfiShoppingCart } from "react-icons/tfi";
+import useAuth from "../../Hooks/useAuth";
 
 const Nav = () => {
 
 
     AOS.init();
     const [open, setOpen] = useState(false);
-    const {logOut, user} = useContext(authContext);
+    const {logOut, user} = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state || '/';

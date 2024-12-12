@@ -3,18 +3,16 @@ import banner from '../assets/Authentication/authentication.png'
 import loginImg from '../assets/Authentication/authentication2.png'
 import { FcGoogle } from "react-icons/fc";
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
-import { useContext, useEffect, useState } from 'react';
-import { authContext } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { FaEyeSlash } from "react-icons/fa"
 import { IoMdEye } from "react-icons/io"
 import { Helmet } from 'react-helmet-async';
+import useAuth from '../Hooks/useAuth';
+import { useEffect, useState } from 'react';
 
 
 const Login = () => {
-
-    const {logIn} = useContext(authContext);
-    const {signInWithGoogle} = useContext(authContext);
+    const {logIn, signInWithGoogle} = useAuth();
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();

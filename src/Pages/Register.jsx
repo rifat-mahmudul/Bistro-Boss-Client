@@ -4,13 +4,13 @@ import loginImg from '../assets/Authentication/authentication2.png'
 import Swal from 'sweetalert2'
 import { FaEyeSlash } from "react-icons/fa"
 import { IoMdEye } from "react-icons/io"
-import { useContext, useState } from 'react'
-import { authContext } from '../Provider/AuthProvider'
 import { Helmet } from 'react-helmet-async'
+import useAuth from '../Hooks/useAuth'
+import { useState } from 'react'
 
 const Register = () => {
 
-    const {createUser, logOut, profileUpdate} = useContext(authContext);
+    const {createUser, logOut, profileUpdate} = useAuth();
 
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const navigate = useNavigate();

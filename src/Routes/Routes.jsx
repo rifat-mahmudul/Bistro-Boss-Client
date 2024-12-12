@@ -7,7 +7,6 @@ import OurShop from "../Pages/OurShop";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import Error from "../Pages/Error";
-import PrivateRoutes from "./PrivateRoutes";
 
 const AppRoutes = () => {
     return (
@@ -16,7 +15,7 @@ const AppRoutes = () => {
                 <Route path="/" element={<Home />}></Route>
                 <Route path="/contact-us" element={<ContactUs></ContactUs>}></Route>
                 <Route path="/our-menu" element={<OurMenu></OurMenu>}></Route>
-                <Route path="/our-shop" element={<PrivateRoutes><OurShop></OurShop></PrivateRoutes>}></Route>
+                <Route path="/our-shop" element={<OurShop></OurShop>}></Route>
                 <Route path="/login" element={<Login></Login>}></Route>
                 <Route path="/register" element={<Register></Register>}></Route>
             </Route>

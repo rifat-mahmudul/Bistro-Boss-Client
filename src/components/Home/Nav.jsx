@@ -7,6 +7,7 @@ import 'aos/dist/aos.css';
 import Swal from "sweetalert2";
 import { TfiShoppingCart } from "react-icons/tfi";
 import useAuth from "../../Hooks/useAuth";
+import useCart from "../../Hooks/useCart";
 
 const Nav = () => {
 
@@ -17,6 +18,7 @@ const Nav = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state || '/';
+    const [cart] = useCart();
 
     const handleLogOut = () => {
 
@@ -99,7 +101,7 @@ const Nav = () => {
 
                 <div className="flex bg-red-500 rounded-full h-6 w-6 absolute -right-2 -top-2">
                     <div className="flex items-center justify-center h-full w-full">
-                        0
+                        {cart.length}
                     </div>
                 </div>
             </div>

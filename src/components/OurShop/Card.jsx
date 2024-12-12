@@ -5,6 +5,7 @@ import useAuth from '../../Hooks/useAuth';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { useLocation, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
+import useCart from '../../Hooks/useCart';
 
 const Card = ({item}) => {
     AOS.init();
@@ -15,6 +16,7 @@ const Card = ({item}) => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.pathname || '/';
+    const [,refetch] = useCart();
 
     const handleCart = () => {
 
@@ -28,7 +30,6 @@ const Card = ({item}) => {
             }
             axiosSecure.post('/carts', cartItem)
             .then(res => {
-                console.log(res);
                 if(res.data.insertedId){
                     Swal.fire({
                         icon: "success",
@@ -36,6 +37,7 @@ const Card = ({item}) => {
                         showConfirmButton: false,
                         timer: 1500
                     });
+                    refetch();
                 }
             })
         }

@@ -66,7 +66,7 @@ const ContactUs = () => {
             {/* contact form */}
             <Title title="Send Us a Message" heading="CONTACT FORM"></Title>
 
-            <div className='max-w-[90%] xl:max-w-[900px] mx-auto bg-gray-300 p-8 rounded-lg mb-16'>
+            <div className='max-w-[90%] xl:max-w-[900px] mx-auto bg-gray-200 p-8 rounded-lg mb-16'>
 
                 <form>
 

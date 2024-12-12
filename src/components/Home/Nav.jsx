@@ -89,12 +89,21 @@ const Nav = () => {
             OUR SHOP
         </NavLink>
 
-        <NavLink 
-        onClick={() => setOpen(false)} 
-        className={({isActive}) => isActive ? `text-yellow-500 font-bold` : `font-semibold hover:text-yellow-500 transition`} 
-        to="/cart">
-            <TfiShoppingCart className="mx-auto" size={25}></TfiShoppingCart>
-        </NavLink>
+        <Link 
+        onClick={() => setOpen(false)}
+        >
+            <div className="flex relative">
+                <div>
+                    <TfiShoppingCart className="mx-auto" size={25}></TfiShoppingCart>
+                </div>
+
+                <div className="flex bg-red-500 rounded-full h-6 w-6 absolute -right-2 -top-2">
+                    <div className="flex items-center justify-center h-full w-full">
+                        0
+                    </div>
+                </div>
+            </div>
+        </Link>
 
         {
             user ? 

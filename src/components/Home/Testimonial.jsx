@@ -5,18 +5,19 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Autoplay, Navigation } from 'swiper/modules';
 import { SiComma } from "react-icons/si";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const Testimonial = () => {
 
     const [items, setItems] = useState([]);
+    const axiosPublic = useAxiosPublic();
 
     useEffect(() => {
-        fetch('http://localhost:5000/reviews')
-        .then(res => res.json())
-        .then(data => {
-            setItems(data);
+        axiosPublic.get('/reviews')
+        .then(res => {
+            setItems(res.data);
         })
-    }, [])
+    }, [axiosPublic])
 
     return (
         <section className="mb-16">

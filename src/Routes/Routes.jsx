@@ -9,6 +9,7 @@ import Register from "../Pages/Register";
 import Error from "../Pages/Error";
 import Dashboard from "../Pages/Dashboard";
 import MyCart from "../components/Dashobard/DasContainer/MyCart";
+import PrivateRoutes from "./PrivateRoutes";
 
 
 const AppRoutes = () => {
@@ -23,7 +24,7 @@ const AppRoutes = () => {
                 <Route path="/register" element={<Register></Register>}></Route>
             </Route>
 
-            <Route path="/dashboard" element={<Dashboard></Dashboard>}>
+            <Route path="/dashboard" element={<PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>}>
                 <Route path="/dashboard/my-cart" element={<MyCart></MyCart>}></Route>
             </Route>
 

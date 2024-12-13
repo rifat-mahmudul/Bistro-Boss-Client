@@ -100,11 +100,14 @@ const Nav = () => {
                     <TfiShoppingCart className="mx-auto" size={25}></TfiShoppingCart>
                 </div>
 
-                <div className="flex bg-red-500 rounded-full h-6 w-6 absolute -right-2 -top-2">
-                    <div className="flex items-center justify-center h-full w-full">
-                        {cart.length}
+                {
+                    cart.length > 0 &&
+                    <div className="flex bg-red-500 rounded-full h-6 w-6 absolute -right-2 -top-2">
+                        <div className="flex items-center justify-center h-full w-full">
+                            {cart.length}
+                        </div>
                     </div>
-                </div>
+                }
             </div>
         </Link>
 

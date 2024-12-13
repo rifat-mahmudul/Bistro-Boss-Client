@@ -49,7 +49,7 @@ const Sidebar = () => {
             <li className="font-semibold">
                 <NavLink 
                 onClick={() => setOpen(false)} 
-                to='/Dashboard/user-home' 
+                to='/Dashboard/my-cart' 
                 className={({isActive}) => isActive ? `text-white font-bold flex items-center gap-2` : `font-semibold hover:text-white transition flex items-center gap-2`}
                 >
                     <FaShoppingCart />
@@ -101,12 +101,12 @@ const Sidebar = () => {
     </>
 
     return (
-        <section className="bg-[#d1a054]">
+        <section className="bg-[#d1a054] lg:p-14 lg:rounded-lg lg:mb-16 mb-10">
 
             <div className="flex lg:block items-center justify-between max-w-[90%] xl:max-w-[1200px] mx-auto">
                 <div>
                     <Link to="/">
-                        <h1 className="flex flex-col font-Cinzel font-bold mb-8">
+                        <h1 className="flex flex-col font-Cinzel text-center font-bold mb-8">
                             <span className="text-xl">BISTROBOSS</span>
                             <span className="tracking-widest">Restaurant</span>
                         </h1>

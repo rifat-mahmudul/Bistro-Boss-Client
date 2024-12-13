@@ -8,6 +8,8 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import Error from "../Pages/Error";
 import Dashboard from "../Pages/Dashboard";
+import MyCart from "../components/Dashobard/DasContainer/MyCart";
+
 
 const AppRoutes = () => {
     return (
@@ -22,7 +24,7 @@ const AppRoutes = () => {
             </Route>
 
             <Route path="/dashboard" element={<Dashboard></Dashboard>}>
-
+                <Route path="/dashboard/my-cart" element={<MyCart></MyCart>}></Route>
             </Route>
 
             <Route path="*" element={<Error></Error>}></Route>

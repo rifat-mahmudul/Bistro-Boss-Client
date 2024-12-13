@@ -92,6 +92,7 @@ const Nav = () => {
         </NavLink>
 
         <Link 
+        to="/dashboard/my-cart"
         onClick={() => setOpen(false)}
         >
             <div className="flex relative">

@@ -73,13 +73,6 @@ const Nav = () => {
         <NavLink 
         onClick={() => setOpen(false)} 
         className={({isActive}) => isActive ? `text-yellow-500 font-bold` : `font-semibold hover:text-yellow-500 transition`} 
-        to="/dashboard">
-            DASHBOARD
-        </NavLink>
-
-        <NavLink 
-        onClick={() => setOpen(false)} 
-        className={({isActive}) => isActive ? `text-yellow-500 font-bold` : `font-semibold hover:text-yellow-500 transition`} 
         to="/our-menu">
             OUR MENU
         </NavLink>
@@ -89,6 +82,13 @@ const Nav = () => {
         className={({isActive}) => isActive ? `text-yellow-500 font-bold` : `font-semibold hover:text-yellow-500 transition`} 
         to="/our-shop">
             OUR SHOP
+        </NavLink>
+        
+        <NavLink 
+        onClick={() => setOpen(false)} 
+        className={({isActive}) => isActive ? `text-yellow-500 font-bold` : `font-semibold hover:text-yellow-500 transition`} 
+        to="/dashboard">
+            DASHBOARD
         </NavLink>
 
         <Link 
@@ -162,7 +162,7 @@ const Nav = () => {
                         <nav className="lg:hidden relative">
                             <ul 
                             data-aos="fade-left" 
-                            className="flex flex-col gap-5 absolute -top-4 py-5 px-20 right-2 bg-gray-500 text-center border border-gray-200 rounded-xl transition delay-75">
+                            className="flex flex-col gap-5 absolute -top-4 py-5 px-20 right-2 bg-[#d1a054] text-center border border-gray-200 rounded-xl transition delay-75">
                                 {navItem}
                             </ul>
                         </nav>

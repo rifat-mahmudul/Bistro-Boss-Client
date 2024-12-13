@@ -7,6 +7,7 @@ import OurShop from "../Pages/OurShop";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import Error from "../Pages/Error";
+import Dashboard from "../Pages/Dashboard";
 
 const AppRoutes = () => {
     return (
@@ -18,6 +19,10 @@ const AppRoutes = () => {
                 <Route path="/our-shop" element={<OurShop></OurShop>}></Route>
                 <Route path="/login" element={<Login></Login>}></Route>
                 <Route path="/register" element={<Register></Register>}></Route>
+            </Route>
+
+            <Route path="/dashboard" element={<Dashboard></Dashboard>}>
+
             </Route>
 
             <Route path="*" element={<Error></Error>}></Route>

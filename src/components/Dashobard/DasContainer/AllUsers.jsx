@@ -1,15 +1,16 @@
 import { Helmet } from "react-helmet-async"
 import Title from "../../Shared/Title"
 import noData from '../../../assets/NODATA.png'
-import useAxiosPublic from "../../../Hooks/useAxiosPublic"
 import { useQuery } from "@tanstack/react-query"
 import { MdDeleteForever } from "react-icons/md"
 import { FaUsers } from "react-icons/fa"
+import { RiAdminFill } from "react-icons/ri";
 import Swal from "sweetalert2"
+import useAxiosSecure from "../../../Hooks/useAxiosSecure"
 
 const AllUsers = () => {
 
-    const axiosSecure = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
     const {refetch, data : user = []} = useQuery({
         queryKey : ['user'],
         queryFn : async () => {
@@ -44,6 +45,58 @@ const AllUsers = () => {
         });
     }
 
+    const handleAdmin = (id, userName) => {
+        Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, Make Admin!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        axiosSecure.patch(`/user/admin/${id}`, { role: "admin" })
+                        .then(res => {
+                            if(res.data.modifiedCount > 0){
+                                Swal.fire({
+                                    title: "Success!",
+                                    text: `${userName} is a admin now 🙂`,
+                                    icon: "success"
+                                });
+                                refetch();
+                            }
+                        })
+                    }
+        });
+    }
+
+    const removeAdmin = (id, userName) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Remove Admin!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.patch(`/user/admin/${id}`, { role: "user" })
+                .then(res => {
+                    if(res.data.modifiedCount > 0){
+                        Swal.fire({
+                            title: "Success!",
+                            text: `${userName} is a user now 🙂`,
+                            icon: "success"
+                        });
+                        refetch();
+                    }
+                })
+            }
+        });
+    }
+
     return (
         <section className="mb-16 w-full">
             <Helmet>
@@ -55,7 +108,7 @@ const AllUsers = () => {
                 <div className="w-[90%] mx-auto bg-white p-4 sm:p-8 rounded-lg">
                     
                     <div className="flex flex-col sm:flex-row gap-5 justify-between items-center text-xl font-semibold uppercase">
-                        <h1>Total Users: {user.length}</h1>
+                        <h1>Total Users : {user.length}</h1>
                     </div>
 
                     <div className="w-full mt-5 rounded-t-xl overflow-scroll sm:overflow-hidden">
@@ -88,11 +141,21 @@ const AllUsers = () => {
                                         <td
                                         className="text-green-700 text-2xl"
                                         >
-                                            <button className="bg-green-200 p-2 rounded-md">
+                                            {item.role === 'admin' 
+                                            ? 
+                                            <button 
+                                            onClick={() => removeAdmin(item._id, item?.userName)}
+                                            className="bg-orange-200 text-orange-700 p-2 rounded-md">
+                                                <RiAdminFill className="mx-auto cursor-pointer" />
+                                            </button>
+                                            : 
+                                            <button 
+                                            onClick={() => handleAdmin(item._id, item?.userName)}
+                                            className="bg-green-200 p-2 rounded-md">
                                                 <FaUsers
                                                 className="mx-auto cursor-pointer"
                                                 ></FaUsers>
-                                            </button>
+                                            </button>}
                                         </td>
                                         <td className="text-red-700 text-2xl">
                                             <button 

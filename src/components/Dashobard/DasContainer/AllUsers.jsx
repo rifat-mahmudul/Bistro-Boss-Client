@@ -5,6 +5,7 @@ import useAxiosPublic from "../../../Hooks/useAxiosPublic"
 import { useQuery } from "@tanstack/react-query"
 import { MdDeleteForever } from "react-icons/md"
 import { FaUsers } from "react-icons/fa"
+import Swal from "sweetalert2"
 
 const AllUsers = () => {
 
@@ -15,7 +16,33 @@ const AllUsers = () => {
             const res = await axiosSecure.get('/users')
             return res.data;
         }
-    })
+    });
+
+    const handleDelete = id => {
+        Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        axiosSecure.delete(`/users/${id}`)
+                        .then(res => {
+                            if(res.data.deletedCount > 0){
+                                Swal.fire({
+                                    title: "Deleted!",
+                                    text: "User has been deleted.",
+                                    icon: "success"
+                                });
+                                refetch();
+                            }
+                        })
+                    }
+        });
+    }
 
     return (
         <section className="mb-16 w-full">
@@ -23,7 +50,7 @@ const AllUsers = () => {
                 <title>All Users - Bistro Boss</title>
             </Helmet>
             <div className="mx-auto">
-                <Title title="My Cart" heading="WANNA ADD MORE?"></Title>
+                <Title title="How Many??" heading="MANAGE ALL USERS"></Title>
 
                 <div className="w-[90%] mx-auto bg-white p-4 sm:p-8 rounded-lg">
                     
@@ -49,25 +76,31 @@ const AllUsers = () => {
                                     <>
                                         <div className="flex flex-col justify-center items-center mx-auto mt-5">
                                             <img src={noData} className="h-[150px]" alt="" />
-                                            <p className="font-bold text-3xl mt-4 text-red-500">NO CART ADDED</p>
+                                            <p className="font-bold text-3xl mt-4 text-red-500">NO USER FOUND</p>
                                         </div>
                                     </>
                                     :
                                     user.map((item, index) => <tbody key={item._id}>
                                         <tr className="text-center h-16 border-b-2 text-gray-500 font-semibold">
                                         <td>{index + 1}</td>
-                                        <td>{item?.displayName}</td>
+                                        <td>{item?.userName}</td>
                                         <td>{item?.email}</td>
                                         <td
-                                        className="text-green-500 text-2xl"
+                                        className="text-green-700 text-2xl"
                                         >
-                                            <FaUsers
-                                            className="mx-auto cursor-pointer"
-                                            ></FaUsers>
+                                            <button className="bg-green-200 p-2 rounded-md">
+                                                <FaUsers
+                                                className="mx-auto cursor-pointer"
+                                                ></FaUsers>
+                                            </button>
                                         </td>
-                                        <td className="text-red-500 text-3xl">
-                                            <MdDeleteForever 
-                                            className="mx-auto cursor-pointer" />
+                                        <td className="text-red-700 text-2xl">
+                                            <button 
+                                            onClick={() => handleDelete(item._id)}
+                                            className="bg-red-200 p-2 rounded-md">
+                                                <MdDeleteForever 
+                                                className="mx-auto cursor-pointer" />
+                                            </button>
                                         </td>
                                     </tr>
                                     </tbody>)

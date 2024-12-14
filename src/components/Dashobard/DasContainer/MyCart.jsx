@@ -91,9 +91,13 @@ const MyCart = () => {
                                         </td>
                                         <td>{item?.name}</td>
                                         <td>{item?.price}</td>
-                                        <td onClick={() => handleDelete(item._id)} className="text-red-500 text-3xl">
-                                            <MdDeleteForever 
-                                            className="mx-auto cursor-pointer" />
+                                        <td className="text-red-700 text-3xl">
+                                            <button 
+                                            onClick={() => handleDelete(item._id)}
+                                            className="bg-red-200 p-2 rounded-md">
+                                                <MdDeleteForever 
+                                                className="mx-auto cursor-pointer" />
+                                            </button>
                                         </td>
                                     </tr>
                                     </tbody>)

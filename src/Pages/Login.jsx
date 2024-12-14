@@ -9,6 +9,7 @@ import { IoMdEye } from "react-icons/io"
 import { Helmet } from 'react-helmet-async';
 import useAuth from '../Hooks/useAuth';
 import { useEffect, useState } from 'react';
+import useAxiosPublic from '../Hooks/useAxiosPublic';
 
 
 const Login = () => {
@@ -17,6 +18,7 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state || '/';
+    const axiosPublic = useAxiosPublic();
 
     useEffect(() => {
         loadCaptchaEnginge(6);
@@ -89,7 +91,17 @@ const Login = () => {
         }
 
         logIn(email, password)
-        .then(() => {
+        .then((result) => {
+            const currentUser = result.user;
+            const updatedUserName = currentUser?.displayName || "Unknown User";
+            const userData = {
+            userName: updatedUserName,
+            email: email,
+            };
+            axiosPublic.post(`/users`, userData)
+            .then(res => {
+                console.log(res.data);
+            })
             Swal.fire({
                 icon: "success",
                 title: "Successfully Log In",
@@ -105,7 +117,15 @@ const Login = () => {
 
     const handleGoogleLogIn = () => {
         signInWithGoogle()
-        .then(() => {
+        .then((result) => {
+            const currentUser = result.user;
+            const updatedUserName = currentUser?.displayName || "Unknown User";
+            const email = currentUser?.email || "Unknown Email";
+            const userData = {
+            userName: updatedUserName,
+            email: email,
+            };
+            axiosPublic.post(`/users`, userData);
             Swal.fire({
                 icon: "success",
                 title: "Successfully Log In",

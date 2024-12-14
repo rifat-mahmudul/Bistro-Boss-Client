@@ -91,7 +91,7 @@ const MyCart = () => {
                                         </td>
                                         <td>{item?.name}</td>
                                         <td>{item?.price}</td>
-                                        <td onClick={() => handleDelete(item._id)} className="text-red-500 text-2xl">
+                                        <td onClick={() => handleDelete(item._id)} className="text-red-500 text-3xl">
                                             <MdDeleteForever 
                                             className="mx-auto cursor-pointer" />
                                         </td>

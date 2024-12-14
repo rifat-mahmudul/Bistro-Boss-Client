@@ -5,7 +5,7 @@ import Footer from "../components/Home/Footer"
 const Dashboard = () => {
     return (
         <section>
-            <div className="xl:max-w-[1200px] mx-auto lg:mt-8 lg:flex gap-16">
+            <div className="xl:max-w-[1200px] mx-auto lg:mt-8 lg:flex gap-10">
                 <Sidebar></Sidebar>
                 <Outlet></Outlet>
             </div>

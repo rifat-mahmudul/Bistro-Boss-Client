@@ -10,6 +10,7 @@ import Error from "../Pages/Error";
 import Dashboard from "../Pages/Dashboard";
 import MyCart from "../components/Dashobard/DasContainer/MyCart";
 import PrivateRoutes from "./PrivateRoutes";
+import AllUsers from "../components/Dashobard/DasContainer/AllUsers";
 
 
 const AppRoutes = () => {
@@ -26,6 +27,7 @@ const AppRoutes = () => {
 
             <Route path="/dashboard" element={<PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>}>
                 <Route path="/dashboard/my-cart" element={<MyCart></MyCart>}></Route>
+                <Route path="/dashboard/all-users" element={<AllUsers></AllUsers>}></Route>
             </Route>
 
             <Route path="*" element={<Error></Error>}></Route>

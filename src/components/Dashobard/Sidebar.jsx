@@ -1,4 +1,4 @@
-import { FaBookMedical, FaHome, FaMoneyBill, FaRegCalendarAlt, FaShoppingCart } from "react-icons/fa"
+import { FaBookMedical, FaHome, FaMoneyBill, FaRegCalendarAlt, FaShoppingCart, FaUsers } from "react-icons/fa"
 import { MdOutlineRateReview } from "react-icons/md"
 import { AiOutlineMenu } from "react-icons/ai";
 import { FaBagShopping } from "react-icons/fa6";
@@ -7,77 +7,145 @@ import { Link, NavLink } from "react-router"
 import { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import { RiMenu3Fill } from "react-icons/ri";
+import { ImSpoonKnife } from "react-icons/im";
+import { AiOutlineMenuUnfold } from "react-icons/ai";
 
 const Sidebar = () => {
 
     const [open, setOpen] = useState(false);
+    const admin = true;
 
     const sideBar = <>
-        <li className="font-semibold">
-                <NavLink 
-                onClick={() => setOpen(false)} 
-                to='/Dashboard/user-home' 
-                className={({isActive}) => isActive ? `text-white font-bold flex items-center gap-2` : `font-semibold hover:text-white transition flex items-center gap-2`} 
-                >
-                    <FaHome />
-                    <h3>User Home</h3>
-                </NavLink>
-            </li>
-            
-            <li className="font-semibold">
-                <NavLink 
-                onClick={() => setOpen(false)} 
-                to='/Dashboard/user-home' 
-                className={({isActive}) => isActive ? `text-white font-bold flex items-center gap-2` : `font-semibold hover:text-white transition flex items-center gap-2`}
-                >
-                    <FaRegCalendarAlt />
-                    <h3>reservation</h3>
-                </NavLink>
-            </li>
-            
-            <li className="font-semibold">
-                <NavLink 
-                onClick={() => setOpen(false)} 
-                to='/Dashboard/user-home' 
-                className={({isActive}) => isActive ? `text-white font-bold flex items-center gap-2` : `font-semibold hover:text-white transition flex items-center gap-2`}
-                >
-                    <FaMoneyBill />
-                    <h3>reservation</h3>
-                </NavLink>
-            </li>
-            
-            <li className="font-semibold">
-                <NavLink 
-                onClick={() => setOpen(false)} 
-                to='/Dashboard/my-cart' 
-                className={({isActive}) => isActive ? `text-white font-bold flex items-center gap-2` : `font-semibold hover:text-white transition flex items-center gap-2`}
-                >
-                    <FaShoppingCart />
-                    <h3>my cart</h3>
-                </NavLink>
-            </li>
-            
-            <li className="font-semibold">
-                <NavLink 
-                onClick={() => setOpen(false)} 
-                to='/Dashboard/user-home' 
-                className={({isActive}) => isActive ? `text-white font-bold flex items-center gap-2` : `font-semibold hover:text-white transition flex items-center gap-2`}
-                >
-                    <MdOutlineRateReview />
-                    <h3>add review</h3>
-                </NavLink>
-            </li>
-            
-            <li className="font-semibold border-b-2 pb-8">
-                <NavLink 
-                onClick={() => setOpen(false)} 
-                to='/Dashboard/user-home' 
-                className={({isActive}) => isActive ? `text-white font-bold flex items-center gap-2` : `font-semibold hover:text-white transition flex items-center gap-2`}
-                >
-                    <FaBookMedical /> 
-                    <h3>my booking</h3>
-                </NavLink>
-            </li>
+            {
+                admin 
+                ?
+                <>
+                    <li className="font-semibold">
+                        <NavLink 
+                        onClick={() => setOpen(false)} 
+                        to='/Dashboard/user-home' 
+                        className={({isActive}) => isActive ? `text-white font-bold flex items-start gap-2` : `font-semibold hover:text-white transition flex items-center gap-2`} 
+                        >
+                            <FaHome />
+                            <h3>Admin Home</h3>
+                        </NavLink>
+                    </li>
+
+                    <li className="font-semibold">
+                        <NavLink 
+                        onClick={() => setOpen(false)} 
+                        to='/Dashboard/user-home' 
+                        className={({isActive}) => isActive ? `text-white font-bold flex items-center gap-2` : `font-semibold hover:text-white transition flex items-center gap-2`}
+                        >
+                            <ImSpoonKnife />
+                            <h3>add items</h3>
+                        </NavLink>
+                    </li>
+
+                    <li className="font-semibold">
+                        <NavLink 
+                        onClick={() => setOpen(false)} 
+                        to='/Dashboard/user-home' 
+                        className={({isActive}) => isActive ? `text-white font-bold flex items-center gap-2` : `font-semibold hover:text-white transition flex items-center gap-2`}
+                        >
+                            <AiOutlineMenuUnfold />
+                            <h3>manage items</h3>
+                        </NavLink>
+                    </li>
+
+                    <li className="font-semibold">
+                        <NavLink 
+                        onClick={() => setOpen(false)} 
+                        to='/Dashboard/manage-bookings' 
+                        className={({isActive}) => isActive ? `text-white font-bold flex items-center gap-2` : `font-semibold hover:text-white transition flex items-center gap-2`}
+                        >
+                            <FaShoppingCart />
+                            <h3>Manage bookings</h3>
+                        </NavLink>
+                    </li>
+
+                    <li className="font-semibold border-b-2 pb-8">
+                        <NavLink 
+                        onClick={() => setOpen(false)} 
+                        to='/Dashboard/all-users' 
+                        className={({isActive}) => isActive ? `text-white font-bold flex items-center gap-2` : `font-semibold hover:text-white transition flex items-center gap-2`}
+                        >
+                            <FaUsers />
+                            <h3>all users</h3>
+                        </NavLink>
+                    </li>
+                </>
+                :
+                <>
+
+                    <li className="font-semibold">
+                        <NavLink 
+                        onClick={() => setOpen(false)} 
+                        to='/Dashboard/user-home' 
+                        className={({isActive}) => isActive ? `text-white font-bold flex items-center gap-2` : `font-semibold hover:text-white transition flex items-center gap-2`} 
+                        >
+                            <FaHome />
+                            <h3>User Home</h3>
+                        </NavLink>
+                    </li>
+
+                    <li className="font-semibold">
+                        <NavLink 
+                        onClick={() => setOpen(false)} 
+                        to='/Dashboard/user-home' 
+                        className={({isActive}) => isActive ? `text-white font-bold flex items-center gap-2` : `font-semibold hover:text-white transition flex items-center gap-2`}
+                        >
+                            <FaRegCalendarAlt />
+                            <h3>reservation</h3>
+                        </NavLink>
+                    </li>
+
+                    <li className="font-semibold">
+                        <NavLink 
+                        onClick={() => setOpen(false)} 
+                        to='/Dashboard/user-home' 
+                        className={({isActive}) => isActive ? `text-white font-bold flex items-center gap-2` : `font-semibold hover:text-white transition flex items-center gap-2`}
+                        >
+                            <FaMoneyBill />
+                            <h3>reservation</h3>
+                        </NavLink>
+                    </li>
+
+                    <li className="font-semibold">
+                        <NavLink 
+                        onClick={() => setOpen(false)} 
+                        to='/Dashboard/my-cart' 
+                        className={({isActive}) => isActive ? `text-white font-bold flex items-center gap-2` : `font-semibold hover:text-white transition flex items-center gap-2`}
+                        >
+                            <FaShoppingCart />
+                            <h3>my cart</h3>
+                        </NavLink>
+                    </li>
+
+                    <li className="font-semibold">
+                        <NavLink 
+                        onClick={() => setOpen(false)} 
+                        to='/Dashboard/user-home' 
+                        className={({isActive}) => isActive ? `text-white font-bold flex items-center gap-2` : `font-semibold hover:text-white transition flex items-center gap-2`}
+                        >
+                            <MdOutlineRateReview />
+                            <h3>add review</h3>
+                        </NavLink>
+                    </li>
+
+                    <li className="font-semibold border-b-2 pb-8">
+                        <NavLink 
+                        onClick={() => setOpen(false)} 
+                        to='/Dashboard/user-home' 
+                        className={({isActive}) => isActive ? `text-white font-bold flex items-center gap-2` : `font-semibold hover:text-white transition flex items-center gap-2`}
+                        >
+                            <FaBookMedical /> 
+                            <h3>my booking</h3>
+                        </NavLink>
+                    </li>
+
+                </>
+            }
             
             <li className="flex items-center gap-2 font-semibold pt-6 hover:text-white">
                 <FaHome />
@@ -101,7 +169,7 @@ const Sidebar = () => {
     </>
 
     return (
-        <section className="bg-[#d1a054] lg:p-14 lg:rounded-lg lg:mb-16 mb-10">
+        <section className="bg-[#d1a054] lg:py-10 py-6 lg:w-[30%] lg:rounded-lg lg:mb-16 mb-10">
 
             <div className="flex lg:block items-center justify-between max-w-[90%] xl:max-w-[1200px] mx-auto">
                 <div>
@@ -114,8 +182,10 @@ const Sidebar = () => {
                 </div>
             
                 <nav>
-                    <ul className="uppercase lg:flex flex-col gap-3 text-center hidden">
-                        {sideBar}
+                    <ul className="uppercase lg:flex hidden">
+                        <div className="mx-auto flex flex-col gap-3">
+                            {sideBar}
+                        </div>
                     </ul>
 
                     <button onClick={() => setOpen(!open)} className="text-3xl font-bold lg:hidden">
@@ -130,7 +200,7 @@ const Sidebar = () => {
                             <div>
                                 <nav className="lg:hidden relative">
                                     <ul 
-                                    className="flex flex-col gap-5 absolute top-1 py-5 px-20 right-0 bg-[#d1a054] text-center transition delay-75">
+                                    className="flex flex-col gap-5 absolute top-1 py-5 px-20 right-0 bg-[#d1a054] transition delay-75">
                                         {sideBar}
                                     </ul>
                                 </nav>
